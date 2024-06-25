@@ -1,0 +1,35 @@
+# Function to check if a number is prime
+def is_prime(n):
+    if n <= 1:
+        return False
+    if n <= 3:
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+
+# Function to calculate the number of instances of equivalent prime hours
+def equivalent_prime_hours(D, P):
+    hours_per_part = D // P
+    count = 0
+    for hour in range(2, hours_per_part + 1):
+        if is_prime(hour):
+            corresponding_hour = hour + hours_per_part
+            if is_prime(corresponding_hour):
+                count += 1
+    return count
+
+# Main function
+def main():
+    D, P = map(int, input().split())
+    instances = equivalent_prime_hours(D, P)
+    print(instances)
+
+# Calling the main function
+if _name_ == "_main_":
+    main()

@@ -1,0 +1,7 @@
+def choose_training_session(X, Y):
+    if X > Y:
+        return "FREEKICK"
+    else:
+        return "PENALTY"
+X, Y = map(int, input().split())
+print(choose_training_session(X, Y))//football training

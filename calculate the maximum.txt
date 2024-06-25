@@ -1,0 +1,25 @@
+# Function to calculate the maximum combined strength of two spells
+def max_combined_strength(spells):
+    max_strength = 0
+    n = len(spells)
+    for i in range(n):
+        for j in range(i+1, n):
+            combined_strength = spells[i][0] * spells[j][1] + spells[i][1] * spells[j][0]
+            max_strength = max(max_strength, combined_strength)
+    return max_strength
+
+# Main function to handle input and output
+def main():
+    T = int(input())  # Number of test cases
+    for _ in range(T):
+        N = int(input())  # Number of spells
+        spells = []
+        for _ in range(N):
+            V, A = map(int, input().split())  # Volatility and strength of each spell
+            spells.append((V, A))
+        # Calculate and print the maximum combined strength
+        print(max_combined_strength(spells))
+
+# Calling the main function
+if _name_ == "_main_":
+    main()

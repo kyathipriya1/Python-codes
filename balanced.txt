@@ -1,0 +1,16 @@
+def is_balanced(string):
+    counts = {}
+    for char in string:
+        counts[char] = counts.get(char, 0) + 1
+    return len(set(counts.values())) == 1
+
+def min_substrings(string):
+    if is_balanced(string):
+        return 1
+    return -1
+
+if _name_ == "_main_":
+    T = int(input())
+    for _ in range(T):
+        string = input().strip()
+        print(min_substrings(string))

@@ -1,0 +1,19 @@
+def solve(t):
+    for _ in range(t):
+        n, k, x = map(int, input().split())
+        k -= 1  # Adjusting k to match 0-indexing in Python
+        if k >= 30:
+            print("NO")
+            continue
+        minval = 2**k
+        if x >= minval:
+            print("YES")
+        else:
+            print("NO")
+
+# Input the number of test cases
+t = int(input())
+
+# Call the solve function with the number of test cases
+solve(t)
+Super increasing

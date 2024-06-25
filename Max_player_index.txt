@@ -1,0 +1,11 @@
+h = int(input())
+for _ in range(h):
+    max_score = -1
+    max_player_index = -1
+    for i in range(1, 23):
+        runs, wickets = map(int, input().split())
+        points = runs + (wickets * 20)
+        if points > max_score:
+            max_score = points
+            max_player_index = i
+    print(max_player_index)

@@ -1,0 +1,12 @@
+t=int(input())
+for i in range(t):
+    a=int(input())
+    b=input()
+    c=b.split()
+    k=0
+    f=[]
+    for j in range(a):
+        k=k+2*int(c[j])
+        f.append(k)
+        k=k-int(c[j])
+    print(max(f))

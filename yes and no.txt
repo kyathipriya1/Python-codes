@@ -1,0 +1,8 @@
+h = int(input())
+for _ in range(h):
+    h = int(input())
+    scores = list(map(int, input().split()))
+    if all(score > 4 for score in scores):
+        print("YES")
+    else:
+        print("NO")

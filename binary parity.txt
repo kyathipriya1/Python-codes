@@ -1,0 +1,14 @@
+def bin_par(N):
+    binary = bin(N)[2:]
+    count_ones = binary.count('1')
+    
+    if count_ones % 2 == 0:
+        return "EVEN"
+    else:
+        return "ODD"
+        
+t = int(input().strip())
+
+for _ in range(t):
+    N = int(input().strip())
+    print(bin_par(N))  #binaryparity

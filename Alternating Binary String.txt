@@ -1,0 +1,11 @@
+def min_operations_to_alternate():
+    T = int(input().strip())
+    for _ in range(T):
+        N = int(input().strip())
+        S = input().strip()
+        # Count the number of times the same character appears consecutively
+        count = sum(S[i] == S[i+1] for i in range(N-1))
+        print(count)
+
+# Call the function
+min_operations_to_alternate()

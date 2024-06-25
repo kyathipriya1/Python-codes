@@ -1,0 +1,16 @@
+def max_weight(n, weights):
+    weights = sorted(weights)  # Sorting the weights
+    max_weight = 0
+    
+    for i in range(n):
+        max_weight_supported_by_current_subset = weights[i] * (n - i)
+        
+        max_weight = max(max_weight, max_weight_supported_by_current_subset)
+        
+    return max_weight
+    
+T = int(input().strip())    
+for _ in range(T):
+    n = int(input().strip())
+    strengths = list(map(int, input().strip().split()))
+    print(max_weight(n, strengths))  # Corrected function call

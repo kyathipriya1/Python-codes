@@ -1,0 +1,7 @@
+import math
+for _ in range(int(input())):
+    a,b =map(int, input().split())
+    if a-10>=b:
+        print(0)
+    else:
+        print(math.ceil((b+10-a)/3))

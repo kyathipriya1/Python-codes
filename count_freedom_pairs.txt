@@ -1,0 +1,18 @@
+
+
+def count_freedom_pairs(T):
+    for t in range(T):
+        N = int(input())
+        A = list(map(int, input().split()))
+        count = 0
+        for i in range(N):
+            for j in range(i + 1, N):
+                a = A[i] - A[j]
+                b = A[i] + A[j]
+                c = A[i] * A[j]
+                if 2 * b == a + c:
+                    count += 1
+        print(count)
+
+T = int(input())
+count_freedom_pairs(T)

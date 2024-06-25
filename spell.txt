@@ -1,0 +1,17 @@
+def max_spell_strength(spells):
+    max_strength=0
+    n=len(spells)
+    for i in range(n):
+        for j in range(i+1,n):
+            strength=spells[i][0]*spells[j][1]+spells[i][1]*spells[j][0]
+            max_strength=max(max_strength,strength)
+    return max_strength
+t=int(input())
+for _ in range(t):
+    n=int(input())
+    spells=[]
+    for _ in range(n):
+        v,a=map(int,input().split())
+        spells.append((v,a))
+    result=max_spell_strength(spells)
+    print(result)

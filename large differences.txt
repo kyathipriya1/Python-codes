@@ -1,0 +1,42 @@
+def abs_diff(a, b):
+    return abs(a - b)
+
+def main():
+    T = int(input())
+    
+    for _ in range(T):
+        N, K = map(int, input().split())
+        
+        A = list(map(int, input().split()))
+        
+        initial_sum = sum(abs_diff(A[i], A[i + 1]) for i in range(N - 1))
+        
+        max_sum = initial_sum
+        
+        for i in range(N):
+            original = A[i]
+            
+            replace_with_1 = initial_sum
+            if i > 0:
+                replace_with_1 -= abs_diff(A[i], A[i - 1])
+                replace_with_1 += abs_diff(1, A[i - 1])
+            if i < N - 1:
+                replace_with_1 -= abs_diff(A[i], A[i + 1])
+                replace_with_1 += abs_diff(1, A[i + 1])
+            if replace_with_1 > max_sum:
+                max_sum = replace_with_1
+            
+            replace_with_K = initial_sum
+            if i > 0:
+                replace_with_K -= abs_diff(A[i], A[i - 1])
+                replace_with_K += abs_diff(K, A[i - 1])
+            if i < N - 1:
+                replace_with_K -= abs_diff(A[i], A[i + 1])
+                replace_with_K += abs_diff(K, A[i + 1])
+            if replace_with_K > max_sum:
+                max_sum = replace_with_K
+        
+        print(max_sum)
+
+if _name_ == "_main_":
+    main()

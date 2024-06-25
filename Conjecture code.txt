@@ -1,0 +1,37 @@
+from collections import deque
+
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    a = input()
+    b = input()
+    q = deque()
+    curr = -1
+    flag = True
+
+    for i in range(n):
+        if a[i] == b[i]:
+            if a[i] == 'b':
+                curr = i
+        elif a[i] == 'a' and b[i] == 'c':
+            q.append(i)
+        elif a[i] == 'c' and b[i] == 'a':
+            if len(q) != 0 and q[0] < curr:
+                q.popleft()
+            else:
+                print("No")
+                flag = False
+                break
+        else:
+            print("No")
+            flag = False
+            break
+
+    if flag and len(q) > 0:
+        print("No")
+    elif flag:
+        print("Yes")
+
+
+

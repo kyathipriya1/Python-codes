@@ -1,0 +1,46 @@
+from collections import deque
+
+# Function to check if the given coordinates are within the forest boundaries
+def is_valid(x, y, M, N):
+    return 0 <= x < M and 0 <= y < N
+
+# Function to calculate the time taken for the entire forest to catch fire
+def forest_fire_time(M, N, X, Y, forest):
+    dx = [-1, -1, -1, 0, 0, 1, 1, 1]  # Directions for row
+    dy = [-1, 0, 1, -1, 1, -1, 0, 1]  # Directions for column
+    
+    queue = deque([(X-1, Y-1)])  # Queue to store coordinates of trees on fire
+    time = 0
+    
+    while queue:
+        size = len(queue)
+        for _ in range(size):
+            x, y = queue.popleft()
+            forest[x][y] = 'F'  # Mark the current tree as on fire
+            
+            # Spread fire to adjacent trees in all 8 directions
+            for i in range(8):
+                nx, ny = x + dx[i], y + dy[i]
+                if is_valid(nx, ny, M, N) and forest[nx][ny] == 'T':
+                    queue.append((nx, ny))
+                    forest[nx][ny] = 'F'  # Mark the adjacent tree as on fire
+        
+        time += 1
+    
+    return time
+
+# Main function
+def main():
+    M, N = map(int, input().split())  # Size of the forest
+    X, Y = map(int, input().split())  # Coordinates of the first tree that catches fire
+    
+    forest = [list(input().split()) for _ in range(M)]  # Forest layout
+    
+    # Find the time taken for the entire forest to catch fire
+    time = forest_fire_time(M, N, X, Y, forest)
+    
+    print(time)
+
+# Calling the main function
+if _name_ == "_main_":
+    main()
